@@ -11,16 +11,17 @@ const AddRoom = () => {
     const handleRoomInputChange = (e) => {
         const name = e.target.name;
         let value = e.target.value;
-
-        if(name === "roomPrice") {
-            if(!isNaN(value)) {
-                value.parseInt(value);
+    
+        if (name === "roomPrice") {
+            if (!isNaN(value) && value.trim() !== "") {
+                value = parseInt(value);
             } else {
-                value = "";
+                value = ""; 
             }
         }
-        setNewRoom({...newRoom, [name]: value});
-    } 
+        
+        setNewRoom({ ...newRoom, [name]: value });
+    };
 
     const handleImageChange = (e) => {
         const selectedImage = e.target.files[0];
