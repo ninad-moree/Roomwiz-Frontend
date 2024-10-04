@@ -29,10 +29,10 @@ const EditRoom = () => {
       const success = await updateRoom(roomId, room);
 
       if (success !== undefined) {
-        setSuccessMessage("A new room was added to the database.");
+        setSuccessMessage("Room updated successfully");
         const updatedRoom = await getRoomById(roomId);
-        setRoom({ photo: null, roomType: "", roomPrice: "" });
-        setImagePreview("");
+        setRoom(updateRoom);
+        setImagePreview(updateRoom.photo);
         setErrorMessage("");
       } else {
         setErrorMessage("Error in adding new room.");
@@ -125,8 +125,8 @@ const EditRoom = () => {
               </div>
 
               <div className="d-grid d-md-flex mt-2">
-                <Link to={"/existing-rooms"} className="btn btn-outline-info ml-5">back</Link>
-                
+                <Link to={"/existing-rooms"} className="btn btn-outline-info me-1">Back</Link>
+
                 <button className="btn btn-outline-primary ml-5">Edit Room</button>
               </div>
             </form>

@@ -77,6 +77,14 @@ const ExistingRooms = () => {
 
     return (
         <>
+            {successMessage && (
+              <div className="alert alert-success fade show">{successMessage}</div>
+            )}
+
+            {errorMessage && (
+              <div className="alert alert-danger fade show">{errorMessage}</div>
+            )}
+            
             {isLoading ? (
                 <p>Loading existing rooms</p>
             ) : (
