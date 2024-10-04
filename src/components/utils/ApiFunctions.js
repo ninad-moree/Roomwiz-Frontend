@@ -49,3 +49,24 @@ export async function deleteRoom(roomId) {
         throw new Error(`Error deleting room ${error.message}`);
     }
 }
+
+// EDIT ROOM BY ID
+export async function updateRoom(roomId, roomData) {
+    const formData = new FormData();
+    formData.append("roomType", roomData.roomType);
+    formData.append("roomPrice", roomData.roomPrice);
+    formData.append("photo", roomData.photo);
+
+    const response = await api.put(`/rooms/edit/${roomId}`);
+    return response;
+}
+
+// GET SINGLE ROOM BY ID
+export async function getRoomById(roomId) {
+    try {
+        const result = await api.get(`/rooms/room/${roomId}`);
+        return result.data;
+    } catch (error) {
+        throw new Error(`Error getting room ${error.message}`);
+    }
+} 
