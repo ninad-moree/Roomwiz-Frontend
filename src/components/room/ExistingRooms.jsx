@@ -124,9 +124,9 @@ const ExistingRooms = () => {
                                         <td>{room.roomPrice}</td>
                                         <td className='gap-2'>
                                             <Link to={`/edit-room/${room.id}`}>
-                                                <span className='btn btn-info btn-sm'><FaEye /></span>
+                                                <span className='btn btn-info btn-sm me-1'><FaEye /></span>
 
-                                                <span className='btn btn-warning btn-sm'><FaEdit /></span>
+                                                <span className='btn btn-warning btn-sm me-1'><FaEdit /></span>
                                             </Link>
 
                                             <button 
