@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { addRoom } from '../utils/ApiFunctions';
 import RoomTypeSelector from '../common/RoomTypeSelector';
-import { Link } from 'react-router-dom';
 
 const AddRoom = () => {
     const [newRoom, setNewRoom] = useState({photo: null, roomType: "", roomPrice: ""});

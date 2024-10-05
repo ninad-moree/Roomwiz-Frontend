@@ -1,5 +1,6 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
-// import "../node_modules/bootstrap/dist/js/bootstrap.min.js"
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css'
 import Home from "./components/home/Home.jsx"
@@ -8,7 +9,6 @@ import NavBar from "./components/layout/NavBar.jsx"
 import AddRoom from './components/room/AddRoom'
 import EditRoom from "./components/room/EditRoom.jsx"
 import ExistingRooms from "./components/room/ExistingRooms.jsx"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RoomListing from "./components/room/RoomListing.jsx"
 import Admin from "./components/admin/Admin.jsx";
 

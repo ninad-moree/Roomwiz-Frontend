@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { getRoomById, updateRoom } from "../utils/ApiFunctions";
 import { useParams } from "react-router-dom";
-import RoomTypeSelector from '../common/RoomTypeSelector';
 import { Link } from "react-router-dom";
+
+import { getRoomById, updateRoom } from "../utils/ApiFunctions";
+import RoomTypeSelector from '../common/RoomTypeSelector';
+
 
 const EditRoom = () => {
   const [room, setRoom] = useState({photo: null, roomType: "", roomPrice: ""});
