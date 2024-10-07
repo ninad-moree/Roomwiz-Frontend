@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { getAllRooms } from '../utils/ApiFunctions';
 import { Link } from 'react-router-dom';
 import { Card, Carousel, Col, Container, Row } from 'react-bootstrap';
+
+import { getAllRooms } from '../utils/ApiFunctions';
 
 const RoomCarousel = () => {
     const [rooms, setRooms] = useState([]);
