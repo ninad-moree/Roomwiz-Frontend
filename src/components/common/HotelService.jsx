@@ -6,14 +6,14 @@ import { FaClock, FaCocktail, FaParking, FaSnowflake, FaTshirt, FaUtensils, FaWi
 const HotelService = () => {
   return (
     <>
-        <Container className='mb-2'>
+        <Container className='mb-5'>
             <Header title={"Our Services"}/>
 
             <Row className='mt-4'>
                 <h4 className='text-center'>
                     Services at <span className='hotel-color'> RoomWiz </span> Hotel
                     <span className='gap-2'>
-                        <FaClock className='ml-5'/> 24-Hour Front Desk
+                        <FaClock className='ms-1'/> 24-Hour Front Desk
                     </span>
                 </h4>
             </Row>
