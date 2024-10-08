@@ -4,6 +4,8 @@ export const api = axios.create({
     baseURL: "http://localhost:9192"
 });
 
+/* ###########################################  ROOM CRUD OPERATIONS  ########################################### */
+
 // ADD NEW ROOM
 export async function addRoom(photo, roomType, roomPrice) {
     const formData = new FormData();
@@ -70,6 +72,9 @@ export async function getRoomById(roomId) {
         throw new Error(`Error getting room ${error.message}`);
     }
 } 
+
+
+/* ###########################################  BOOKING ROOM OPERATIONS  ########################################### */
 
 // BOOK ROOM
 export async function bookRoom(roomId, booking) {
