@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import BookingForm from './BookingForm'
-import { getRoomById } from '../utils/ApiFunctions';
 import { useParams } from 'react-router-dom';
 import { FaCar, FaParking, FaTshirt, FaTv, FaUtensils, FaWifi, FaWineGlassAlt } from 'react-icons/fa';
+
+import BookingForm from './BookingForm'
+import { getRoomById } from '../utils/ApiFunctions';
 
 const CheckOut = () => {
   const [error, setError] = useState('');
