@@ -4,6 +4,7 @@ import { FaCar, FaParking, FaTshirt, FaTv, FaUtensils, FaWifi, FaWineGlassAlt } 
 
 import BookingForm from './BookingForm'
 import { getRoomById } from '../utils/ApiFunctions';
+import RoomCarousel from '../common/RoomCarousel';
 
 const CheckOut = () => {
   const [error, setError] = useState('');
@@ -78,6 +79,10 @@ const CheckOut = () => {
             </div>
           </div>
         </section>
+
+        <div className='container'>
+          <RoomCarousel />
+        </div>
     </div>
   )
 }
