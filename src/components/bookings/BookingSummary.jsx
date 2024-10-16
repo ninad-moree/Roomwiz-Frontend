@@ -29,7 +29,7 @@ const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
     }, [isBookingConfirmed, navigate])
 
     return (
-        <div className='card card-body mt-5'>
+        <div className='card card-body mt-5 text-start'>
             <h4>Reservation Summary</h4>
 
             <p>FullName: <strong>{booking.guestName}</strong></p>
@@ -41,13 +41,13 @@ const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
             <div>
                 <h5>Number of Guests</h5>
 
-                <strong>Adult {booking.numberOfAdults > 1 ? "s" : ""}: {booking.numberOfAdults}</strong>
+                <strong>Adult {booking.numberOfAdults > 1 ? "s" : ""}: {booking.numberOfAdults}</strong><br/>
                 <strong>Children: {booking.numberOfChildren}</strong>
             </div>
 
             {payment > 0 ? (
                 <>
-                    <p>Total Paymen: <strong>Rs.{payment}</strong></p>
+                    <p>Total Payment: <strong>Rs.{payment}</strong></p>
 
                     {isFormValid && !isBookingConfirmed ? (
                         <Button variant='success' onClick={handleConfirmBooking}>

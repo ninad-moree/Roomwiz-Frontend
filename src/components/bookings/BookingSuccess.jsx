@@ -9,7 +9,7 @@ const BookingSuccess = () => {
     const error = location.state?.error;
 
     return (
-        <div className='container'>
+        <div className='container text-start'>
             <Header title="Booking Success" />
 
             <div className='mt-5'>

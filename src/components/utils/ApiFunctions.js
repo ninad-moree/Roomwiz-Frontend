@@ -79,7 +79,7 @@ export async function getRoomById(roomId) {
 // BOOK ROOM
 export async function bookRoom(roomId, booking) {
     try {
-        const response = await api.get(`/bookings/room/${roomId}/booking`, booking);
+        const response = await api.post(`/bookings/room/${roomId}/booking`, booking);
         return response.data;
     } catch (error) {
         if(error.response && error.response.data) {
