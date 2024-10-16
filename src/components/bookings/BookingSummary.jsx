@@ -32,7 +32,7 @@ const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
         <div className='card card-body mt-5 text-start'>
             <h4>Reservation Summary</h4>
 
-            <p>FullName: <strong>{booking.guestName}</strong></p>
+            <p>FullName: <strong>{booking.guestFullName}</strong></p>
             <p>Email: <strong>{booking.guestEmail}</strong></p>
             <p>Check-In Date: <strong>{moment(booking.checkInDate).format("MMM Do YYYY")}</strong></p>
             <p>Check-Out Date: <strong>{moment(booking.checkOutDate).format("MMM Do YYYY")}</strong></p>
