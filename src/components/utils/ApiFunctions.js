@@ -73,6 +73,12 @@ export async function getRoomById(roomId) {
     }
 } 
 
+// GET AVAILABLE ROOMS FOR DATES (NOT BOOKED)
+export async function getAvailableRooms(checkInDate, checkOutDate, roomType) {
+    const result = await api.get(`/rooms/available-rooms?checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&roomType=${roomType}`);
+    return result;
+}
+
 
 /* ###########################################  BOOKING ROOM OPERATIONS  ########################################### */
 
