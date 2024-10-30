@@ -4,6 +4,14 @@ export const api = axios.create({
     baseURL: "http://localhost:9192"
 });
 
+export const getHeader = () => {
+    const token = localStorage.getItem("token");
+    return {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+    }
+} 
+
 /* ###########################################  ROOM CRUD OPERATIONS  ########################################### */
 
 // ADD NEW ROOM
@@ -127,5 +135,50 @@ export async function cancelBooking(bookingId) {
         return result.data;
     } catch (error) {
         throw new Error(`Error cancelling booking: ${error.message}`);
+    }
+}
+
+/* ###########################################  uSER AUTHENTICATION OPERATIONS  ########################################### */
+
+// SIGN UP
+export async function registerUser(registration) {
+    try {
+        const response = await api.post("/auth/register-user", registration);
+        return response;
+    } catch (error) {
+        if(error.response && error.response.data) {
+            throw new Error(error.response.data);
+        } else {
+            throw new Error(`User registration error: ${error.message}`);
+        }
+    }
+}
+
+// LOGIN
+export async function loginUser(login) {
+    try {
+        const response = await api.post("/auth/login", login);
+
+        if(response.status >= 200 && response.status < 300) {
+            response.data;
+        } else {
+            return null;
+        }
+    } catch (error) { 
+        console.error(error);
+        return null;
+    }
+}
+
+// GET USER PROFILE
+export async function getUserProfile(userId, token) {
+    try {
+        const response = await api.get(`users/profile/${userId}`, {
+            headers: getHeader()
+        });
+
+        return response.data;
+    } catch (error) {
+        throw error;
     }
 }
