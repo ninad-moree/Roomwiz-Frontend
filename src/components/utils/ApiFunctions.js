@@ -1,16 +1,16 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "http://localhost:9192"
+    baseURL: "http://localhost:9192",
 });
 
 export const getHeader = () => {
-    const token = localStorage.getItem("token");
-    return {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-    }
-} 
+	const token = localStorage.getItem("token")
+	return {
+		Authorization: `Bearer ${token}`,
+		"Content-Type": "application/json"
+	}
+}
 
 /* ###########################################  ROOM CRUD OPERATIONS  ########################################### */
 
@@ -160,7 +160,7 @@ export async function loginUser(login) {
         const response = await api.post("/auth/login", login);
 
         if(response.status >= 200 && response.status < 300) {
-            response.data;
+            return response.data;
         } else {
             return null;
         }
@@ -181,4 +181,42 @@ export async function getUserProfile(userId, token) {
     } catch (error) {
         throw error;
     }
+}
+
+// DELETE USER
+export async function deleteUser(userId) {
+	try {
+		const response = await api.delete(`/users/delete/${userId}`, {
+			headers: getHeader()
+		});
+		return response.data;
+	} catch (error) {
+		return error.message;
+	}
+}
+
+// GET USER
+export async function getUser(userId, token) {
+	try {
+		const response = await api.get(`/users/${userId}`, {
+			headers: getHeader()
+		});
+		return response.data;
+	} catch (error) {
+        console.error("Error fetching user:", error.response || error.message);
+		throw error;
+	}
+}
+
+// GET USER BOOKING BY ID
+export async function getBookingsByUserId(userId, token) {
+	try {
+		const response = await api.get(`/bookings/user/${userId}/bookings`, {
+			headers: getHeader()
+		});
+		return response.data;
+	} catch (error) {
+		console.error("Error fetching bookings:", error.message);
+		throw new Error("Failed to fetch bookings");
+	}
 }
