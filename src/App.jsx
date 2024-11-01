@@ -20,6 +20,7 @@ import Registration from "./components/auth/Registration.jsx";
 import Profile from "./components/auth/Profile.jsx";
 import Logout from "./components/auth/Logout.jsx";
 import AuthProvider from "./components/auth/AuthProvider.jsx";
+import RequireAuth from "./components/auth/RequireAuth.jsx";
 
 function App() {
   return (
@@ -37,7 +38,16 @@ function App() {
 
             <Route path="/admin" element={<Admin />}/>
 
-            <Route path="/book-room/:roomId" element={<CheckOut />}/>
+            <Route
+							path="/book-room/:roomId"
+							element={
+								<RequireAuth>
+									<CheckOut />
+								</RequireAuth>
+							}
+						/>
+
+            {/* <Route path="/book-room/:roomId" element={<CheckOut />}/> */}
             <Route path="/booking-success" element={<BookingSuccess />}/>
             <Route path="/existing-bookings" element={<Bookings />}/>
             <Route path="/find-booking" element={<FindBooking />}/>
