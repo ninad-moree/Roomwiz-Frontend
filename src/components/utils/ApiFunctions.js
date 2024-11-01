@@ -21,7 +21,9 @@ export async function addRoom(photo, roomType, roomPrice) {
     formData.append('roomType', roomType);
     formData.append('roomPrice', roomPrice);
 
-    const response = await api.post("/rooms/add/new-room", formData);
+    const response = await api.post("/rooms/add/new-room", formData, {
+        headers: getHeader()
+    });
 
     if(response.status === 201) {
         return true;
@@ -53,7 +55,9 @@ export async function getAllRooms() {
 // DELETE ROOM BY ID
 export async function deleteRoom(roomId) {
     try {
-        const result = await api.delete(`/rooms/delete/room/${roomId}`);
+        const result = await api.delete(`/rooms/delete/room/${roomId}`, {
+			headers: getHeader()
+		});
         return result.data;
     } catch (error) {
         throw new Error(`Error deleting room ${error.message}`);
@@ -67,7 +71,9 @@ export async function updateRoom(roomId, roomData) {
     formData.append("roomPrice", roomData.roomPrice);
     formData.append("photo", roomData.photo);
 
-    const response = await api.put(`/rooms/edit/${roomId}`, formData);
+    const response = await api.put(`/rooms/edit/${roomId}`, formData, {
+        headers: getHeader()
+    });
     return response;
 }
 
@@ -93,7 +99,9 @@ export async function getAvailableRooms(checkInDate, checkOutDate, roomType) {
 // BOOK ROOM
 export async function bookRoom(roomId, booking) {
     try {
-        const response = await api.post(`/bookings/room/${roomId}/booking`, booking);
+        const response = await api.post(`/bookings/room/${roomId}/booking`, booking, {
+			headers: getHeader()
+		});
         return response.data;
     } catch (error) {
         if(error.response && error.response.data) {
@@ -107,7 +115,9 @@ export async function bookRoom(roomId, booking) {
 // GET ALL BOOKINGS
 export async function getAllBookings() {
     try {
-        const result = await api.get(`/bookings/all-bookings`);
+        const result = await api.get(`/bookings/all-bookings`, {
+			headers: getHeader()
+		});
         return result.data;
     } catch (error) {
         throw new Error(`Error fetching room: ${error.message}`);
