@@ -122,7 +122,7 @@ const Login = () => {
 	}
 
 	return (
-		<section className="container col-6 mt-5 mb-5">
+		<section className="container col-6 mt-5 mb-5 text-start">
 			{errorMessage && <p className="alert alert-danger">{errorMessage}</p>}
 			<h2>Login</h2>
 			<form onSubmit={handleSubmit}>
