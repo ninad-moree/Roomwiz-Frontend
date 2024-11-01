@@ -10,8 +10,7 @@ const Profile = () => {
 		firstName: "",
 		lastName: "",
 		roles: [{ id: "", name: "" }]
-	})
-
+	});
 	const [bookings, setBookings] = useState([
 		{
 			id: "",
@@ -20,40 +19,42 @@ const Profile = () => {
 			checkOutDate: "",
 			bookingConfirmationCode: ""
 		}
-	])
-	const [message, setMessage] = useState("")
-	const [errorMessage, setErrorMessage] = useState("")
-	const navigate = useNavigate()
+	]);
+	const [message, setMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
+	const navigate = useNavigate();
 
-	const userId = localStorage.getItem("userId")
-	const token = localStorage.getItem("token")
+	const userId = localStorage.getItem("userId");
+	const token = localStorage.getItem("token");
 
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
-				const userData = await getUser(userId, token)
-				setUser(userData)
+				const userData = await getUser(userId, token);
+				console.log(userData);
+				setUser(userData);
 			} catch (error) {
-				console.error(error)
+				console.log(error);
+				console.error(error);
 			}
 		}
 
-		fetchUser()
-	}, [userId])
+		fetchUser();
+	}, [userId]);
 
 	useEffect(() => {
 		const fetchBookings = async () => {
 			try {
-				const response = await getBookingsByUserId(userId, token)
-				setBookings(response)
+				const response = await getBookingsByUserId(userId, token);
+				setBookings(response);
 			} catch (error) {
-				console.error("Error fetching bookings:", error.message)
-				setErrorMessage(error.message)
+				console.error("Error fetching bookings:", error.message);
+				setErrorMessage(error.message);
 			}
 		}
 
 		fetchBookings()
-	}, [userId])
+	}, [userId]);
 
 	const handleDeleteAccount = async () => {
 		const confirmed = window.confirm(
@@ -102,7 +103,7 @@ const Profile = () => {
 
 									<div className="col-md-10">
 										<div className="card-body">
-											<div className="form-group row">
+											<div className="form-group row text-start">
 												<label className="col-md-2 col-form-label fw-bold">ID:</label>
 												<div className="col-md-10">
 													<p className="card-text">{user.id}</p>
@@ -110,7 +111,7 @@ const Profile = () => {
 											</div>
 											<hr />
 
-											<div className="form-group row">
+											<div className="form-group row text-start">
 												<label className="col-md-2 col-form-label fw-bold">First Name:</label>
 												<div className="col-md-10">
 													<p className="card-text">{user.firstName}</p>
@@ -118,7 +119,7 @@ const Profile = () => {
 											</div>
 											<hr />
 
-											<div className="form-group row">
+											<div className="form-group row text-start">
 												<label className="col-md-2 col-form-label fw-bold">Last Name:</label>
 												<div className="col-md-10">
 													<p className="card-text">{user.lastName}</p>
@@ -126,7 +127,7 @@ const Profile = () => {
 											</div>
 											<hr />
 
-											<div className="form-group row">
+											<div className="form-group row text-start">
 												<label className="col-md-2 col-form-label fw-bold">Email:</label>
 												<div className="col-md-10">
 													<p className="card-text">{user.email}</p>
@@ -134,7 +135,7 @@ const Profile = () => {
 											</div>
 											<hr />
 
-											<div className="form-group row">
+											<div className="form-group row text-start">
 												<label className="col-md-2 col-form-label fw-bold">Roles:</label>
 												<div className="col-md-10">
 													<ul className="list-unstyled">
